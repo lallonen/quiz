@@ -38,6 +38,15 @@ sequelize.sync().then(function(){
 			Quiz.create({ pregunta: 'Capital de Italia',
 						  respuesta: 'Roma'
 						});
+			Quiz.create({ pregunta: 'Capital de España',
+						  respuesta: 'Madrid'
+						});
+			Quiz.create({ pregunta: 'Capital de Rusia',
+						  respuesta: 'Moscú'
+						});
+			Quiz.create({ pregunta: 'Capital de Rumania',
+						  respuesta: 'Bucarest'
+						});
 			Quiz.create({ pregunta: 'Capital de Portugal',
 						  respuesta: 'Lisboa'
 						})
@@ -45,8 +54,12 @@ sequelize.sync().then(function(){
 		};
 		/*Quiz.destroy({
  			 where: {
-    			id: '1'
-  			}
-		});*/
+ 			 	id:{
+ 			 		$in: [1, 2, 3]	
+ 			 	}
+ 			 	//$in: [1, 2]
+    			//id: '1'
+  			}*/
+		//});
 	});
 });

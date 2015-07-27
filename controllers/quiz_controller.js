@@ -1,5 +1,6 @@
 
 var models = require('../models/models.js');
+var url = require('url');
 //GET /QUIZES/QUESTION
 
 /*exports.question = function(req,res){
@@ -20,12 +21,34 @@ exports.load = function(req, res, next, quizId){
 };
 
 //GET /quizes
-exports.index = function(req,res){
-	models.Quiz.findAll().then(
-		function(quizes){
-			res.render('quizes/index.ejs',{quizes : quizes});
+/*exports.index = function(req,res){
+		var stringbuscar='';
+		var query= url.parse(req.url,true).query;
+		if (query.search === undefined){
+			stringbuscar ='%';	
+		}else{
+			stringbuscar = '%'+query.search.replace(' ', '%')+'%';
 		}
-	).catch(function(error){next(error);})
+		models.Quiz.findAll({where:{pregunta: {$like: stringbuscar }},order:{'pregunta', 'ASC'}}).then(
+			function(quizes){
+				res.render('quizes/index.ejs',{quizes : quizes, param: stringbuscar});
+			}
+			).catch(function(error){next(error);})
+};*/
+exports.index = function(req,res){
+		var stringbuscar='';
+		var query= url.parse(req.url,true).query;
+		if (query.search === undefined){
+			stringbuscar ='%';	
+		}else{
+			var re = / /gi;
+			stringbuscar = '%'+query.search.replace(re, '%')+'%';
+		}
+		models.Quiz.findAll({where:{pregunta: {$like: stringbuscar }},order:'pregunta ASC'}).then(
+			function(quizes){
+				res.render('quizes/index.ejs',{quizes : quizes});
+			}
+			).catch(function(error){next(error);})
 };
 
 //GET /quizes/:id
