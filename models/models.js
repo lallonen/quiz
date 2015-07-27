@@ -34,7 +34,7 @@ exports.Quiz = Quiz;
 
 sequelize.sync().then(function(){
 	Quiz.count().then(function (count){
-		if(count===0){
+		/*if(count===0){
 			Quiz.create({ pregunta: 'Capital de Italia',
 						  respuesta: 'Roma'
 						});
@@ -51,15 +51,15 @@ sequelize.sync().then(function(){
 						  respuesta: 'Lisboa'
 						})
 			.then(function(){console.log('Base de datos inicializada')});
-		};
-		/*Quiz.destroy({
+		};*/
+		Quiz.destroy({
  			 where: {
  			 	id:{
- 			 		$in: [1, 2, 3]	
+ 			 		$in: [1,4, 5, 6, 7, 8]	
  			 	}
  			 	//$in: [1, 2]
     			//id: '1'
-  			}*/
-		//});
+  			}
+		});
 	});
 });
