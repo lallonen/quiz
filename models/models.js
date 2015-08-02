@@ -36,26 +36,31 @@ sequelize.sync().then(function(){
 	Quiz.count().then(function (count){
 		if(count===0){
 			Quiz.create({ pregunta: 'Capital de Italia',
-						  respuesta: 'Roma'
+						  respuesta: 'Roma',
+						  tematica: 'otro'
 						});
 			Quiz.create({ pregunta: 'Capital de España',
-						  respuesta: 'Madrid'
+						  respuesta: 'Madrid',
+						  tematica: 'otro'
 						});
 			Quiz.create({ pregunta: 'Capital de Rusia',
-						  respuesta: 'Moscú'
+						  respuesta: 'Moscú',
+						  tematica: 'otro'
 						});
 			Quiz.create({ pregunta: 'Capital de Rumania',
-						  respuesta: 'Bucarest'
+						  respuesta: 'Bucarest',
+						  tematica: 'otro'
 						});
 			Quiz.create({ pregunta: 'Capital de Portugal',
-						  respuesta: 'Lisboa'
+						  respuesta: 'Lisboa',
+						  tematica: 'otro'
 						})
 			.then(function(){console.log('Base de datos inicializada')});
 		};
 		/*Quiz.destroy({
  			 where: {
  			 	id:{
- 			 		$in: [1,4, 5, 6, 7, 8]	
+ 			 		$in: [9,11, 12, 13, 14, 10]	
  			 	}
  			 	//$in: [1, 2]
     			//id: '1'
